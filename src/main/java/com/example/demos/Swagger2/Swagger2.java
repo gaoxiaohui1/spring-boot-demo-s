@@ -28,6 +28,6 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("swagger-test-title").description("swagger-test-description")
-                .termsOfServiceUrl("http://blog.csdn.net/je_ge").contact("je-ge").version("1.0").build();
+                .termsOfServiceUrl("http://blog.csdn.net/je_ge").contact("G").version("1.0").build();
     }
 }

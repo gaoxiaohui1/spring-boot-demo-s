@@ -23,7 +23,6 @@ public class UserInfoController {
      * @return
      */
     @ApiOperation(value = "获取单个用户",notes = "获取单个用户的JSON数据")
-    @ApiImplicitParam(name = "id",value = "用户id",required = true,dataType = "int")
     @GetMapping(value = "{id}")
     public UserInfo getUser(@PathVariable(value = "id") Integer id) {
         return service.getSingleUser(id);
@@ -35,6 +34,7 @@ public class UserInfoController {
      * @param value
      * @return
      */
+    @ApiOperation(value = "获取用户列表",notes = "获取多个个用户的JSON数据")
     @GetMapping(value = "list")
     public List<UserInfo> getUsers(@RequestParam(value = "key",required = false) String key,
                                    @RequestParam(value = "value",required = false) String value) {
@@ -56,6 +56,7 @@ public class UserInfoController {
      * @param height
      * @return
      */
+    @ApiOperation(value = "新增用户信息",notes = "返回新增用户的JSON数据")
     @PostMapping(value = "add")
     public UserInfo addUser(@RequestParam(value = "name",required = false) String name,
                             @RequestParam(value = "gender",required = false) String gender,
@@ -78,6 +79,7 @@ public class UserInfoController {
      * @param height
      * @return
      */
+    @ApiOperation(value = "修改用户信息",notes = "修改用户信息并返回用户的JSON数据")
     @PostMapping(value = "update")
     public UserInfo updateUser(@RequestParam(value = "id",required = false) Integer id,
                                @RequestParam(value = "name",required = false) String name,
