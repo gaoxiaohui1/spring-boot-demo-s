@@ -49,7 +49,7 @@ public class UserInfoController {
      */
     @ApiOperation(value = "新增用户信息", notes = "返回新增用户的JSON数据")
     @PostMapping(value = "add")
-    public UserInfo addUser(UserInfo user, BindingResult bindingResult) {
+    public UserInfo addUser(@RequestBody UserInfo user, BindingResult bindingResult) {
         return service.addUser(user);
     }
 
@@ -61,7 +61,7 @@ public class UserInfoController {
      */
     @ApiOperation(value = "修改用户信息", notes = "修改用户信息并返回用户的JSON数据")
     @PostMapping(value = "update")
-    public UserInfo updateUser(UserInfo user, BindingResult bindingResult) {
+    public UserInfo updateUser(@RequestBody UserInfo user, BindingResult bindingResult) {
         return service.updateUser(user);
     }
 

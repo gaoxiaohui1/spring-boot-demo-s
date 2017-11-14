@@ -23,7 +23,8 @@ public class UserInfoService {
      * @return
      */
     public UserInfo getSingleUser(Integer id) {
-        return userInfoRepository.findOne(id);
+        UserInfo res = userInfoRepository.findOne(id);
+        return res;
     }
 
     /**
@@ -52,7 +53,7 @@ public class UserInfoService {
         }
         if (totalUsers.size() > 0) {
             Integer begin = (search.getPage() - 1) * search.getPageSize();
-            Integer end = search.getPage() * search.getPageSize() - 1;
+            Integer end = search.getPage() * search.getPageSize();
             if (end > totalUsers.size()) {
                 end = totalUsers.size();
             }
@@ -68,7 +69,8 @@ public class UserInfoService {
      * @return
      */
     public UserInfo addUser(UserInfo user) {
-        return userInfoRepository.save(user);
+        UserInfo res = userInfoRepository.save(user);
+        return res;
     }
 
     /**
@@ -78,7 +80,8 @@ public class UserInfoService {
      * @return
      */
     public UserInfo updateUser(UserInfo user) {
-        return userInfoRepository.save(user);
+        UserInfo res = userInfoRepository.save(user);
+        return res;
     }
 
     /**
@@ -90,6 +93,7 @@ public class UserInfoService {
     public UserInfo deleteUser(Integer id) {
         UserInfo user = userInfoRepository.findOne(id);
         user.setDataStatus(9);
-        return userInfoRepository.save(user);
+        UserInfo res = userInfoRepository.save(user);
+        return res;
     }
 }
