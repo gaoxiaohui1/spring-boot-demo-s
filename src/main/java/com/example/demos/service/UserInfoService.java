@@ -5,6 +5,10 @@ import com.example.demos.model.Search;
 import com.example.demos.model.UserInfo;
 import com.example.demos.model.UserInfoList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -94,6 +98,18 @@ public class UserInfoService {
         UserInfo user = userInfoRepository.findOne(id);
         user.setDataStatus(9);
         UserInfo res = userInfoRepository.save(user);
+        return res;
+    }
+
+    /**
+     * 根据gender按照ID倒序获取分页的UserInfo
+     *
+     * @param search
+     * @return
+     */
+    public Page<UserInfo> findByGenderOrderByIdDesc(Search search) {
+        Pageable pageable = new PageRequest(search.getPage(), search.getPageSize());
+        Page<UserInfo> res = userInfoRepository.findByGenderOrderByIdDesc(search.getValue(), pageable);
         return res;
     }
 }

@@ -6,6 +6,7 @@ import com.example.demos.model.UserInfoList;
 import com.example.demos.service.UserInfoService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +39,14 @@ public class UserInfoController {
     @ApiOperation(value = "获取用户列表", notes = "获取多个个用户的JSON数据")
     @PostMapping(value = "list")
     public UserInfoList getUsers(@RequestBody Search search, BindingResult bindingResult) {
+        if (search.getKey() == 1) {
+            Page<UserInfo> pageRes = service.findByGenderOrderByIdDesc(search);
+            UserInfoList res = new UserInfoList();
+            System.out.println(pageRes.getTotalPages());
+            res.setTotalCount((int) pageRes.getTotalElements());
+            res.setUsers(pageRes.getContent());
+            return res;
+        }
         return service.getUsers(search);
     }
 
