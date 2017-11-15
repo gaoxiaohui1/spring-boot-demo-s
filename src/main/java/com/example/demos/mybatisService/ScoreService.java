@@ -17,8 +17,13 @@ public class ScoreService {
         return res;
     }
 
-    public List<ScoreEntity> getByCourse(String course) {
-        List<ScoreEntity> res = scoreMapper.getByCourse(course);
+    public List<ScoreEntity> getByCourse1(String course) {
+        List<ScoreEntity> res = scoreMapper.getByCourse1(course);
+        return res;
+    }
+
+    public List<ScoreEntity> getByCourse2(String course) {
+        List<ScoreEntity> res = scoreMapper.getByCourse2(course);
         return res;
     }
 

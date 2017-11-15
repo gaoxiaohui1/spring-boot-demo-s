@@ -20,9 +20,15 @@ public class ScoreController {
         return res;
     }
 
-    @GetMapping("/list/{course}")
-    public List<ScoreEntity> getByCourse(@PathVariable(value = "course") String course) {
-        List<ScoreEntity> res = scoreService.getByCourse(course);
+    @GetMapping("/list1/{course}")
+    public List<ScoreEntity> getByCourse1(@PathVariable(value = "course") String course) {
+        List<ScoreEntity> res = scoreService.getByCourse1(course);
+        return res;
+    }
+
+    @GetMapping("/list2/{course}")
+    public List<ScoreEntity> getByCourse2(@PathVariable(value = "course") String course) {
+        List<ScoreEntity> res = scoreService.getByCourse2(course);
         return res;
     }
 

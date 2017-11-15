@@ -11,21 +11,27 @@ public interface ScoreMapper {
     @Insert("INSERT INTO score(user_id,course,score) VALUES (#{userId},#{course},#{score})")
     Integer insert(ScoreEntity scoreEntity);
 
-    @Select("SELECT * FROM score WHERE course = '${course'")
+    @Select("SELECT * FROM score WHERE course = '${course}'")
     @Results({
-            @Result(property = "userId",column = "user_id")
+            @Result(property = "userId", column = "user_id")
     })
-    List<ScoreEntity> getByCourse(String course);
+    List<ScoreEntity> getByCourse1(@Param("course") String course);
+
+    @Select("SELECT * FROM score WHERE course = #{course}")
+    @Results({
+            @Result(property = "userId", column = "user_id")
+    })
+    List<ScoreEntity> getByCourse2(String course);
 
     @Select("SELECT * FROM score")
     @Results({
-            @Result(property = "userId",column = "user_id")
+            @Result(property = "userId", column = "user_id")
     })
     List<ScoreEntity> getAll();
 
     @Select("SELECT * FROM score WHERE id = #{id}")
     @Results({
-            @Result(property = "userId",column = "user_id")
+            @Result(property = "userId", column = "user_id")
     })
     ScoreEntity getOne(Integer id);
 
